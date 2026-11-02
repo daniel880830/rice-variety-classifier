@@ -1,0 +1,14 @@
+.venv
+.env
+.git
+.idea
+.run
+.pytest_cache
+.ruff_cache
+**/__pycache__
+*.egg-info
+htmlcov
+.coverage
+tests
+models/*
+reports/benchmark.json

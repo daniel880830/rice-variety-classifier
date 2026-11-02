@@ -1,0 +1,28 @@
+services:
+  train:
+    build: .
+    image: rice-variety-classifier:latest
+    command: ["rice", "train"]
+    environment:
+      RICE_LOG_LEVEL: ${RICE_LOG_LEVEL:-info}
+    volumes:
+      - ./data/raw:/app/data/raw:ro
+      - model-store:/app/models
+      - ./reports:/app/reports
+
+  api:
+    image: rice-variety-classifier:latest
+    depends_on:
+      train:
+        condition: service_completed_successfully
+    environment:
+      RICE_LOG_LEVEL: ${RICE_LOG_LEVEL:-info}
+      RICE_MAX_BATCH_SIZE: ${RICE_MAX_BATCH_SIZE:-1000}
+    ports:
+      - "${RICE_HOST_PORT:-8000}:8000"
+    volumes:
+      - model-store:/app/models:ro
+    restart: unless-stopped
+
+volumes:
+  model-store:

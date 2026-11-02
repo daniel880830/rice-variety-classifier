@@ -1,0 +1,29 @@
+{
+  "model": "logistic_regression",
+  "artifact_kb": 2.9,
+  "in_process": {
+    "single_row": {
+      "p50_ms": 0.859,
+      "p95_ms": 0.939,
+      "mean_ms": 0.868
+    },
+    "batch": {
+      "rows": 1000,
+      "seconds": 0.0031,
+      "rows_per_second": 322581
+    }
+  },
+  "environment": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "python": "3.13.5",
+    "sklearn": "1.9.1"
+  },
+  "http": {
+    "p50_ms": 2.16,
+    "p95_ms": 23.839,
+    "mean_ms": 8.173,
+    "requests": 300,
+    "requests_per_second": 122
+  }
+}
